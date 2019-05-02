@@ -69,8 +69,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="default.aspx" />
+    <Content Include="images\ASUSGeForceRTX2060ROGStrixGaming.jpg" />
+    <Content Include="images\ASUSTurboGeForceRTX2080Ti.jpg" />
+    <Content Include="images\GIGABYTEGeForceRTX2070Windforce8G.jpg" />
+    <Content Include="images\GIGABYTEGeForceRTX2080WINDFORCE.jpg" />
+    <Content Include="images\MSIGeForceRTX2060VENTUS6GOC.jpg" />
+    <Content Include="images\ZOTACZotaGAMINGRTX2080TiArcticStorm.jpg" />
     <Content Include="Toevoegen.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Winkelmandje.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\Artikel.cs" />
@@ -91,6 +98,13 @@
     </Compile>
     <Compile Include="Toevoegen.aspx.designer.cs">
       <DependentUpon>Toevoegen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Winkelmandje.aspx.cs">
+      <DependentUpon>Winkelmandje.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Winkelmandje.aspx.designer.cs">
+      <DependentUpon>Winkelmandje.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

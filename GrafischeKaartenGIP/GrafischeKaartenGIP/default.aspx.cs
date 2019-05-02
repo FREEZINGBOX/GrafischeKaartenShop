@@ -14,8 +14,27 @@ namespace GrafischeKaartenGIP
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            gvArtikelen.DataSource = _Controller.HaalArtiekelenOp();
+            gvArtikelen.DataSource = _Controller.HaalArtikelenOp();
             gvArtikelen.DataBind();
+            for (int i = 0; i < gvArtikelen.Rows.Count; i++)
+            {
+                if (Convert.ToInt32(gvArtikelen.Rows[i].Cells[4].Text) == 0)
+                {
+                    gvArtikelen.Rows[i].Cells[5].Text = "Niet op voorraad";
+                }
+            }
+        }
+
+        protected void gvArtikelen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["ArtNr"] = gvArtikelen.SelectedRow.Cells[0].Text;
+            Response.Redirect("Toevoegen.aspx");
+            
+        }
+
+        protected void btnGaWinkelmand_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Winkelmandje.aspx");
         }
     }
 }

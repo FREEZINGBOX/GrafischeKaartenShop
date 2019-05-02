@@ -4,13 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Catalogus</title>
 </head>
 <body>
     <form id="form1" runat="server">
         <h2>ONLINE GRAFISCHE KAARTEN SHOP - CATALOGUS</h2>
         <p>
-            <asp:GridView ID="gvArtikelen" runat="server" AutoGenerateColumns="False">
+            <asp:GridView ID="gvArtikelen" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvArtikelen_SelectedIndexChanged">
                 <Columns>
                     <asp:BoundField DataField="artikelnr" HeaderText="ArtNr">
                     <ItemStyle Width="75px" />
@@ -34,6 +34,7 @@
                 </Columns>
             </asp:GridView>
         </p>
+        <asp:Button ID="btnGaWinkelmand" runat="server" OnClick="btnGaWinkelmand_Click" Text="Bekijk de inhoud van het winkelmandje..." Width="1000px" />
     </form>
 </body>
 </html>
