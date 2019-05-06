@@ -68,21 +68,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bestelbevestiging.aspx" />
     <Content Include="default.aspx" />
     <Content Include="images\ASUSGeForceRTX2060ROGStrixGaming.jpg" />
     <Content Include="images\ASUSTurboGeForceRTX2080Ti.jpg" />
     <Content Include="images\GIGABYTEGeForceRTX2070Windforce8G.jpg" />
     <Content Include="images\GIGABYTEGeForceRTX2080WINDFORCE.jpg" />
     <Content Include="images\MSIGeForceRTX2060VENTUS6GOC.jpg" />
+    <Content Include="images\Verwijderknop.jpg" />
     <Content Include="images\ZOTACZotaGAMINGRTX2080TiArcticStorm.jpg" />
     <Content Include="Toevoegen.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Winkelmandje.aspx" />
+    <Content Include="WinkelmandjeLeeg.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bestelbevestiging.aspx.cs">
+      <DependentUpon>Bestelbevestiging.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bestelbevestiging.aspx.designer.cs">
+      <DependentUpon>Bestelbevestiging.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Business\Artikel.cs" />
     <Compile Include="Business\Controller.cs" />
     <Compile Include="Business\Klant.cs" />
+    <Compile Include="Business\Winkelmand.cs" />
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -105,6 +118,13 @@
     </Compile>
     <Compile Include="Winkelmandje.aspx.designer.cs">
       <DependentUpon>Winkelmandje.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WinkelmandjeLeeg.aspx.cs">
+      <DependentUpon>WinkelmandjeLeeg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WinkelmandjeLeeg.aspx.designer.cs">
+      <DependentUpon>WinkelmandjeLeeg.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

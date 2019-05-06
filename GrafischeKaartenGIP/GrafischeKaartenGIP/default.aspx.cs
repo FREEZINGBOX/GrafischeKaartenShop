@@ -34,7 +34,14 @@ namespace GrafischeKaartenGIP
 
         protected void btnGaWinkelmand_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Winkelmandje.aspx");
+            if (_Controller.ControleerBestaanWinkelmand(1))
+            {
+                Response.Redirect("Winkelmandje.aspx");
+            }
+            else
+            {
+                Response.Redirect("WinkelmandjeLeeg.aspx");
+            }
         }
     }
 }

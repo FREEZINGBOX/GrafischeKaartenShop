@@ -19,7 +19,7 @@ namespace GrafischeKaartenGIP
             lblVerkoopprijs.Text = "€"+_Controller.HaalArtikelOp(ArtNr).Prijs.ToString();
             lblVoorraad.Text = _Controller.HaalArtikelOp(ArtNr).Voorraad.ToString();
             imgFoto.ImageUrl = "./Images/" + _Controller.HaalArtikelOp(ArtNr).Foto;
-            if (_Controller.ControleerWinkelmand(Convert.ToInt32(Session["ArtNr"]), 1))
+            if (_Controller.ControleerArtikelWinkelmand(Convert.ToInt32(Session["ArtNr"]), 1))
             {
                 lblFout.Text = "Dit product zit al in het mandje. ALs u het aantal wil wijzigen, verwijder het dan uit het mandje en voeg het correcte toe.";
                 lblAantal.Visible = false;
