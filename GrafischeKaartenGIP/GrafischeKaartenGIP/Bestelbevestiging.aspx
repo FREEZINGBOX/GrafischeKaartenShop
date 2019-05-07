@@ -23,7 +23,7 @@
             <p>
                 Bedankt voor uw vertrouwen!</p>
             <p>
-                <asp:Button ID="btnCatalogus" runat="server" Text="Terug naar catalogus..." />
+                <asp:Button ID="btnCatalogus" runat="server" Text="Terug naar catalogus..." OnClick="btnCatalogus_Click" />
             </p>
         </div>
     </form>

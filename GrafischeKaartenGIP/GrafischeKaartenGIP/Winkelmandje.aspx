@@ -116,7 +116,7 @@
         <table class="auto-style2">
             <tr>
                 <td class="auto-style7">
-                    <asp:Button ID="btnBestellen" runat="server" Text="Bestellen..." />
+                    <asp:Button ID="btnBestellen" runat="server" Text="Bestellen..." OnClick="btnBestellen_Click" />
                 </td>
                 <td class="auto-style6">
                     <asp:Button ID="btnCatalogus" runat="server" OnClick="btnCatalogus_Click" Text="Terug naar catalogus..." />

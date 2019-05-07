@@ -64,6 +64,7 @@ namespace GrafischeKaartenGIP.Business
 
         public void BestelItemsEnVerwijderVanWinkelmand(int KlantNr)
         {
+            _PersistenceCode.MaakBestellingAan(KlantNr);
             List<Winkelmand> lijst = _PersistenceCode.HaalWinkelmandOp(KlantNr);
             int Aantal = 0;
             int ArtikelNr = 0;
@@ -74,8 +75,22 @@ namespace GrafischeKaartenGIP.Business
                 ArtikelNr = lijst[i].ArtikelNr;
                 _PersistenceCode.SlaOrderItemOpVanWinkelmand(KlantNr, ArtikelNr, Aantal);
             }
-            
-        
+            _PersistenceCode.MaakWinkelmandLeeg(KlantNr);
+        }
+
+        public Order HaalOrderOp(int KlantNr)
+        {
+            return _PersistenceCode.HaalOrderOp(KlantNr);
+        }
+
+        public void stuurMail(string naam, string mail, string onderwerp, string boodschap)
+        {
+            MailSender _MailSender = new MailSender();
+            _MailSender.Naam = naam;
+            _MailSender.Mail = mail;
+            _MailSender.Onderwerp = onderwerp;
+            _MailSender.Boodschap = boodschap;
+            _MailSender.StuurMail();
         }
     }
 }

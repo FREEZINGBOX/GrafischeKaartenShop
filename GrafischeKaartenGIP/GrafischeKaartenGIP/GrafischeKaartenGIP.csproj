@@ -95,6 +95,8 @@
     <Compile Include="Business\Artikel.cs" />
     <Compile Include="Business\Controller.cs" />
     <Compile Include="Business\Klant.cs" />
+    <Compile Include="Business\MailSender.cs" />
+    <Compile Include="Business\Order.cs" />
     <Compile Include="Business\Winkelmand.cs" />
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>

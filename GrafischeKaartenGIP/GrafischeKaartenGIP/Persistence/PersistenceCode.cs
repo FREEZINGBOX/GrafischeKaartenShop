@@ -217,7 +217,7 @@ namespace GrafischeKaartenGIP.Persistence
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
             Conn.Open();
-            string QRY = "select ordernr from tblbestelingen where klantnr =" + KlantNr + " order by ordernr desc limit 1";
+            string QRY = "select ordernr from tblbestellingen where klantnr =" + KlantNr + " order by ordernr desc limit 1";
             MySqlCommand CMD = new MySqlCommand(QRY, Conn);
             MySqlDataReader DTR = CMD.ExecuteReader();
             int Getal = 0;
@@ -237,6 +237,49 @@ namespace GrafischeKaartenGIP.Persistence
             MySqlCommand CMD = new MySqlCommand(QRY, Conn);
             CMD.ExecuteNonQuery();
             Conn.Close();
+        }
+
+        public void MaakWinkelmandLeeg(int KlantNr)
+        {
+            MySqlConnection Conn = new MySqlConnection(ConnSTR);
+            Conn.Open();
+            string QRY = "delete from tblwinkelmanden where klantnr = " + KlantNr;
+            MySqlCommand CMD = new MySqlCommand(QRY, Conn);
+            CMD.ExecuteNonQuery();
+            Conn.Close();
+        }
+
+        public Order HaalOrderOp(int KlantNr)
+        {
+            Order _Order = new Order();
+            _Order.OrderNr = HaalLaatsteOrderNrOp(KlantNr);
+            MySqlConnection Conn = new MySqlConnection(ConnSTR);
+            Conn.Open();
+            string QRY = "select sum(prijs * aantal * 1.21) as prijs from tblbestellijnen where ordernr = " + HaalLaatsteOrderNrOp(KlantNr);
+            MySqlCommand CMD = new MySqlCommand(QRY, Conn);
+            MySqlDataReader DTR = CMD.ExecuteReader();
+            while (DTR.Read())
+            {
+                _Order.Prijs = Convert.ToDouble(DTR["prijs"]);
+            }
+            Conn.Close();
+            return _Order;
+        }
+
+        public Klant HaalMailGegevensOp(int KlantNr)
+        {
+            Klant _Klant = new Klant();
+            MySqlConnection Conn = new MySqlConnection(ConnSTR);
+            Conn.Open();
+            string QRY = "select naam, voornaam, mail from tblklanten where klantnr = " + KlantNr;
+            MySqlCommand CMD = new MySqlCommand(QRY, Conn);
+            MySqlDataReader DTR = CMD.ExecuteReader();
+            while (DTR.Read())
+            {
+                
+            }
+            Conn.Close();
+            return _Klant;
         }
     }
 }
