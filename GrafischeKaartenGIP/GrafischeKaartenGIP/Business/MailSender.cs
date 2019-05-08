@@ -33,14 +33,15 @@ namespace GrafischeKaartenGIP.Business
         public void StuurMail()
         {
             SmtpClient mijnSMTP = new SmtpClient();
-            mijnSMTP.Host = "smtp-mail.outlook.com";
+            mijnSMTP.Host = "smtp.gmail.com";
             mijnSMTP.Port = 587;
             mijnSMTP.EnableSsl = true;
-            mijnSMTP.Credentials = new System.Net.NetworkCredential("krafischekaartenshop@outlook.com", "Test*?-*");
+            mijnSMTP.Credentials = new System.Net.NetworkCredential("grafischekaartenshop@gmail.com", "Test*?-*");
 
-            MailMessage mijnMail = new MailMessage("grafischekaartenshop@outlook.com", "grafischekaartenshop@outlook.com");
+            MailMessage mijnMail = new MailMessage("grafischekaartenshop@gmail.com",_mail);
+
             mijnMail.Subject = _onderwerp;
-            mijnMail.Body = _boodschap;
+            mijnMail.Body = "Geachte " + _naam + Environment.NewLine + _boodschap;
 
             mijnSMTP.Send(mijnMail);
         }

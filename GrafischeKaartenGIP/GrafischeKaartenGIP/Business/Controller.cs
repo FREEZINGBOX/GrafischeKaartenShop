@@ -83,13 +83,13 @@ namespace GrafischeKaartenGIP.Business
             return _PersistenceCode.HaalOrderOp(KlantNr);
         }
 
-        public void stuurMail(string naam, string mail, string onderwerp, string boodschap)
+        public void StuurMail(int KlantNr)
         {
             MailSender _MailSender = new MailSender();
-            _MailSender.Naam = naam;
-            _MailSender.Mail = mail;
-            _MailSender.Onderwerp = onderwerp;
-            _MailSender.Boodschap = boodschap;
+            _MailSender.Naam = _PersistenceCode.HaalMailGegevensOp(KlantNr).Voornaam + " " + _PersistenceCode.HaalMailGegevensOp(KlantNr).Naam;
+            _MailSender.Mail = _PersistenceCode.HaalMailGegevensOp(KlantNr).Mail;
+            _MailSender.Onderwerp = "Bestelbevestiging ordernr: " + _PersistenceCode.HaalLaatsteOrderNrOp(KlantNr);
+            _MailSender.Boodschap = "Uw bestelling met ordernr " + _PersistenceCode.HaalLaatsteOrderNrOp(KlantNr) + " werd goed door ons ontvangen." + Environment.NewLine + "Na betaling van € " + _PersistenceCode.HaalOrderOp(KlantNr).Prijs +  " op rekeningnummer BE36 1030 5325 4381 zullen wij overgaan tot verzending van de grafische kaarten." + Environment.NewLine + "Gelieve het ordernummer als betalingsreferentie mee te geven." + Environment.NewLine + "Bedant voor uw vertrouwen!";
             _MailSender.StuurMail();
         }
     }

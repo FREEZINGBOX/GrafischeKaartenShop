@@ -276,7 +276,9 @@ namespace GrafischeKaartenGIP.Persistence
             MySqlDataReader DTR = CMD.ExecuteReader();
             while (DTR.Read())
             {
-                
+                _Klant.Naam = Convert.ToString(DTR["naam"]);
+                _Klant.Voornaam = Convert.ToString(DTR["voornaam"]);
+                _Klant.Mail = Convert.ToString(DTR["mail"]);
             }
             Conn.Close();
             return _Klant;

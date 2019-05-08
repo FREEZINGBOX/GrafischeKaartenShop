@@ -47,6 +47,7 @@ namespace GrafischeKaartenGIP
 
         protected void btnBestellen_Click(object sender, EventArgs e)
         {
+            _Controller.StuurMail(1);
             _Controller.BestelItemsEnVerwijderVanWinkelmand(1);
             Response.Redirect("Bestelbevestiging.aspx");
         }
