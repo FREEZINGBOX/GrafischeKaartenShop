@@ -14,5 +14,7 @@ namespace GrafischeKaartenGIP.Business
         public string Postcode { get; set; }
         public string gemeente { get; set; }
         public string Mail { get; set; }
+        public string Wachtwoord { get; set; }
+        public string Gebruikersnaam {get; set; }
     }
 }

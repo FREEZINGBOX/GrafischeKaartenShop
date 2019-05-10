@@ -13,8 +13,8 @@ namespace GrafischeKaartenGIP
         Controller _Controller = new Controller();
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblBedrag.Text = "€ " + _Controller.HaalOrderOp(1).Prijs;
-            lblOrdernr.Text = _Controller.HaalOrderOp(1).OrderNr.ToString();
+            lblBedrag.Text = string.Format("{0:c}",_Controller.HaalOrderOp(Convert.ToInt32(Context.User.Identity.Name)).Prijs);
+            lblOrdernr.Text = _Controller.HaalOrderOp(Convert.ToInt32(Context.User.Identity.Name)).OrderNr.ToString();
         }
 
         protected void btnCatalogus_Click(object sender, EventArgs e)

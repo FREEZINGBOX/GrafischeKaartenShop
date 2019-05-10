@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="Bestelbevestiging.aspx" />
     <Content Include="default.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="images\ASUSGeForceRTX2060ROGStrixGaming.jpg" />
     <Content Include="images\ASUSTurboGeForceRTX2080Ti.jpg" />
     <Content Include="images\GIGABYTEGeForceRTX2070Windforce8G.jpg" />
@@ -77,6 +78,8 @@
     <Content Include="images\MSIGeForceRTX2060VENTUS6GOC.jpg" />
     <Content Include="images\Verwijderknop.jpg" />
     <Content Include="images\ZOTACZotaGAMINGRTX2080TiArcticStorm.jpg" />
+    <Content Include="Login.aspx" />
+    <Content Include="Opmaak.css" />
     <Content Include="Toevoegen.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -93,6 +96,7 @@
       <DependentUpon>Bestelbevestiging.aspx</DependentUpon>
     </Compile>
     <Compile Include="Business\Artikel.cs" />
+    <Compile Include="Business\Bedragen.cs" />
     <Compile Include="Business\Controller.cs" />
     <Compile Include="Business\Klant.cs" />
     <Compile Include="Business\MailSender.cs" />
@@ -104,6 +108,16 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Persistence\PersistenceCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

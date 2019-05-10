@@ -13,8 +13,5 @@ namespace GrafischeKaartenGIP.Business
         public int Aantal { get; set; }
         public double Prijs { get; set; }
         public double Totaal { get; set; }
-        public double TotaalExcl { get; set; }
-        public double BTW { get; set; }
-        public double TotaalIncl { get; set; }
     }
 }

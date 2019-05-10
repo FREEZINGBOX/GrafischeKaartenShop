@@ -19,8 +19,8 @@
                     <ItemStyle Width="250px" />
                     </asp:BoundField>
                     <asp:ImageField DataImageUrlField="foto" DataImageUrlFormatString="./images/{0}" HeaderText="Foto">
-                        <ControlStyle Height="125px" Width="250px" />
-                        <ItemStyle Width="250px" />
+                        <ControlStyle Height="140px" Width="200px" />
+                        <ItemStyle Width="200px" />
                     </asp:ImageField>
                     <asp:BoundField DataField="prijs" HeaderText="Verkoopprijs" DataFormatString="{0:c}">
                     <ItemStyle Width="100px" />

@@ -51,7 +51,7 @@ namespace GrafischeKaartenGIP.Business
             return _PersistenceCode.HaalKlantOp(KlantNr);
         }
 
-        public Winkelmand HaalTotalenOp(int KlantNr)
+        public Bedragen HaalTotalenOp(int KlantNr)
         {
             return _PersistenceCode.HaalTotalenOp(KlantNr);
         }
@@ -89,8 +89,16 @@ namespace GrafischeKaartenGIP.Business
             _MailSender.Naam = _PersistenceCode.HaalMailGegevensOp(KlantNr).Voornaam + " " + _PersistenceCode.HaalMailGegevensOp(KlantNr).Naam;
             _MailSender.Mail = _PersistenceCode.HaalMailGegevensOp(KlantNr).Mail;
             _MailSender.Onderwerp = "Bestelbevestiging ordernr: " + _PersistenceCode.HaalLaatsteOrderNrOp(KlantNr);
-            _MailSender.Boodschap = "Uw bestelling met ordernr " + _PersistenceCode.HaalLaatsteOrderNrOp(KlantNr) + " werd goed door ons ontvangen." + Environment.NewLine + "Na betaling van € " + _PersistenceCode.HaalOrderOp(KlantNr).Prijs +  " op rekeningnummer BE36 1030 5325 4381 zullen wij overgaan tot verzending van de grafische kaarten." + Environment.NewLine + "Gelieve het ordernummer als betalingsreferentie mee te geven." + Environment.NewLine + "Bedant voor uw vertrouwen!";
+            _MailSender.Boodschap = "Uw bestelling met ordernr " + _PersistenceCode.HaalLaatsteOrderNrOp(KlantNr) + " werd goed door ons ontvangen." + Environment.NewLine + "Na betaling van " + string.Format("{0:c}",_PersistenceCode.HaalOrderOp(KlantNr).Prijs) +  " op rekeningnummer BE36 1030 5325 4381 zullen wij overgaan tot verzending van de grafische kaarten." + Environment.NewLine + "Gelieve het ordernummer als betalingsreferentie mee te geven." + Environment.NewLine + "Bedant voor uw vertrouwen!";
             _MailSender.StuurMail();
+        }
+
+        public int ControleerLoginEnStuurKlantNrTerug(string Gebruikersnaam, string Wachtwoord)
+        {
+            Klant _Klant = new Klant();
+            _Klant.Gebruikersnaam = Gebruikersnaam;
+            _Klant.Wachtwoord = Wachtwoord;
+            return _PersistenceCode.ControleerLoginEnStuurKlantNrTerug(_Klant);
         }
     }
 }

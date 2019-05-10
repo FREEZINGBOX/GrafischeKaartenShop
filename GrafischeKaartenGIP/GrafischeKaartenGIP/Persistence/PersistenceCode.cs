@@ -165,9 +165,9 @@ namespace GrafischeKaartenGIP.Persistence
             return _Klant;
         }
 
-        public Winkelmand HaalTotalenOp(int KlantNr)
+        public Bedragen HaalTotalenOp(int KlantNr)
         {
-            Winkelmand _Winkelmand = new Winkelmand();
+            Bedragen _Bedragen = new Bedragen();
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
             Conn.Open();
             string QRY = "select sum(aantal*prijs) as totaalexcl, (sum(aantal*prijs) * 0.21) as btw, ((sum(aantal*prijs) * 0.21)+sum(aantal*prijs)) as totaalincl from tblartikelen inner join tblwinkelmanden on tblartikelen.artikelnr = tblwinkelmanden.artikelnr where tblwinkelmanden.klantnr = " + KlantNr;
@@ -175,12 +175,12 @@ namespace GrafischeKaartenGIP.Persistence
             MySqlDataReader DTR = CMD.ExecuteReader();
             while (DTR.Read())
             {
-                _Winkelmand.TotaalExcl = Convert.ToDouble(DTR["totaalexcl"]);
-                _Winkelmand.TotaalIncl = Convert.ToDouble(DTR["totaalincl"]);
-                _Winkelmand.BTW = Convert.ToDouble(DTR["btw"]);
+                _Bedragen.TotaalExcl = Convert.ToDouble(DTR["totaalexcl"]);
+                _Bedragen.TotaalIncl = Convert.ToDouble(DTR["totaalincl"]);
+                _Bedragen.BTW = Convert.ToDouble(DTR["btw"]);
             }
             Conn.Close();
-            return _Winkelmand;
+            return _Bedragen;
         }
 
         public void ProductUitWinkelmandVerwijderen(int KlantNr, int ArtikelNr)
@@ -282,6 +282,22 @@ namespace GrafischeKaartenGIP.Persistence
             }
             Conn.Close();
             return _Klant;
+        }
+
+        public int ControleerLoginEnStuurKlantNrTerug(Klant _Klant)
+        {
+            MySqlConnection Conn = new MySqlConnection(ConnSTR);
+            Conn.Open();
+            string QRY = "select klantnr from tblklanten where gebruikersnaam='" + _Klant.Gebruikersnaam + "' and wachtwoord ='" + _Klant.Wachtwoord + "'";
+            MySqlCommand CMD = new MySqlCommand(QRY, Conn);
+            MySqlDataReader DTR = CMD.ExecuteReader();
+            int Uitvoer = 0;
+            while (DTR.Read())
+            {
+                Uitvoer = Convert.ToInt32(DTR["klantnr"]);
+            }
+            Conn.Close();
+            return Uitvoer;
         }
     }
 }

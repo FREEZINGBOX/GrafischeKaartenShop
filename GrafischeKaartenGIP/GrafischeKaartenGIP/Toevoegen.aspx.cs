@@ -16,10 +16,10 @@ namespace GrafischeKaartenGIP
             int ArtNr = Convert.ToInt32(Session["ArtNr"]);
             lblArtNr.Text = _Controller.HaalArtikelOp(ArtNr).ArtikelNR.ToString();
             lblNaam.Text = _Controller.HaalArtikelOp(ArtNr).Naam;
-            lblVerkoopprijs.Text = "€"+_Controller.HaalArtikelOp(ArtNr).Prijs.ToString();
+            lblVerkoopprijs.Text = string.Format("{0:c}",_Controller.HaalArtikelOp(ArtNr).Prijs);
             lblVoorraad.Text = _Controller.HaalArtikelOp(ArtNr).Voorraad.ToString();
             imgFoto.ImageUrl = "./Images/" + _Controller.HaalArtikelOp(ArtNr).Foto;
-            if (_Controller.ControleerArtikelWinkelmand(Convert.ToInt32(Session["ArtNr"]), 1))
+            if (_Controller.ControleerArtikelWinkelmand(Convert.ToInt32(Session["ArtNr"]), Convert.ToInt32(Context.User.Identity.Name)))
             {
                 lblFout.Text = "Dit product zit al in het mandje. ALs u het aantal wil wijzigen, verwijder het dan uit het mandje en voeg het correcte toe.";
                 lblAantal.Visible = false;
@@ -31,15 +31,36 @@ namespace GrafischeKaartenGIP
 
         protected void btnVoegToe_Click(object sender, EventArgs e)
         {
-            if(_Controller.ControleerVoorraad(Convert.ToInt32(txtAantal.Text), Convert.ToInt32(Session["ArtNr"])) == false)
+            if (double.TryParse(txtAantal.Text,out double TestAantal))
             {
-                lblFout.Text = "Ongeldige voorraad!";
+                if (int.TryParse(txtAantal.Text,out int Aantal))
+                {
+                    if (Aantal < 1)
+                    {
+                        lblFout.Text = "Geef een positief getal boven 0 in.";
+                    }
+                    else
+                    {
+                        if (_Controller.ControleerVoorraad(Convert.ToInt32(txtAantal.Text), Convert.ToInt32(Session["ArtNr"])) == false)
+                        {
+                            lblFout.Text = "Ongeldige voorraad!";
+                        }
+
+                        else
+                        {
+                            _Controller.VoegToeEnPasAan(Convert.ToInt32(txtAantal.Text), Convert.ToInt32(Context.User.Identity.Name), Convert.ToInt32(Session["ArtNr"]));
+                            Response.Redirect("Winkelmandje.aspx");
+                        }
+                    }
+                }
+                else
+                {
+                    lblFout.Text = "Geef een geheel getal in.";
+                }
             }
-           
             else
             {
-                _Controller.VoegToeEnPasAan(Convert.ToInt32(txtAantal.Text), 1, Convert.ToInt32(Session["ArtNr"]));
-                Response.Redirect("Winkelmandje.aspx");
+                lblFout.Text = "Geef een geldig getal in.";
             }
         }
 

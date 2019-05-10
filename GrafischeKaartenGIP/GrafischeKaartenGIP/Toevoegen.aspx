@@ -57,7 +57,7 @@
                 </tr>
             </table>
             <br />
-            <asp:Label ID="lblFout" runat="server"></asp:Label>
+            <asp:Label ID="lblFout" runat="server" ForeColor="Red"></asp:Label>
             <br />
             <asp:Label ID="lblAantal" runat="server" Text="Aantal te bestellen exemplaren van dit item:"></asp:Label>
 &nbsp;

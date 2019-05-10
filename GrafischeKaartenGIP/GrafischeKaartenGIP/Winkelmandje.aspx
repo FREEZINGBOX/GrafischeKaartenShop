@@ -12,19 +12,22 @@
         .auto-style2 {
             width: 1150px;
         }
-        .auto-style3 {
-            width: 750px;
-        }
-        .auto-style5 {
-            width: 200px;
-            text-align: right;
-        }
         .auto-style6 {
             text-align: center;
         }
         .auto-style7 {
             text-align: center;
             width: 575px;
+        }
+        .auto-style8 {
+            width: 1100px;
+        }
+        .auto-style9 {
+            text-align: right;
+        }
+        .auto-style11 {
+            width: 890px;
+            text-align: right;
         }
     </style>
 </head>
@@ -68,8 +71,8 @@
                     <ItemStyle Width="100px" />
                     </asp:CommandField>
                     <asp:ImageField DataImageUrlField="foto" DataImageUrlFormatString="./images/{0}" HeaderText="Foto">
-                        <ControlStyle Height="175px" Width="300px" />
-                        <ItemStyle Width="300px" />
+                        <ControlStyle Height="175px" Width="230px" />
+                        <ItemStyle Width="230px" />
                     </asp:ImageField>
                     <asp:BoundField DataField="artikelnr" HeaderText="ArtNr">
                     <ItemStyle Width="75px" />
@@ -88,30 +91,28 @@
                     </asp:BoundField>
                 </Columns>
             </asp:GridView>
+            <br />
+            <table class="auto-style8">
+                <tr>
+                    <td class="auto-style11">Totaal excl.:</td>
+                    <td class="auto-style9">
+                        <asp:Label ID="lblTotaalExcl" runat="server"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style11">BTW:</td>
+                    <td class="auto-style9">
+                        <asp:Label ID="lblBTW" runat="server"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style11">Totaal incl:</td>
+                    <td class="auto-style9">
+                        <asp:Label ID="lblTotaalIncl" runat="server"></asp:Label>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <table class="auto-style2">
-            <tr>
-                <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style5">Totaal excl. BTW:</td>
-                <td class="auto-style5">
-                    <asp:Label ID="lblTotaalExcl" runat="server"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style5">BTW:</td>
-                <td class="auto-style5">
-                    <asp:Label ID="lblBTW" runat="server"></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style5">Totaal incl. BTW:</td>
-                <td class="auto-style5">
-                    <asp:Label ID="lblTotaalIncl" runat="server"></asp:Label>
-                </td>
-            </tr>
-        </table>
         <br />
         <table class="auto-style2">
             <tr>

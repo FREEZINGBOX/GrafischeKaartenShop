@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using GrafischeKaartenGIP.Business;
+using System.Globalization;
 
 namespace GrafischeKaartenGIP
 {
@@ -13,24 +14,24 @@ namespace GrafischeKaartenGIP
         Controller _Controller = new Controller();
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblKlantnummer.Text = _Controller.HaalKlantOp(1).KlantNr.ToString();
-            lblNaam.Text = _Controller.HaalKlantOp(1).Naam + " " + _Controller.HaalKlantOp(1).Voornaam;
-            lblAdres.Text = _Controller.HaalKlantOp(1).Adres;
-            lblGemeente.Text = _Controller.HaalKlantOp(1).Postcode + " " + _Controller.HaalKlantOp(1).gemeente;
+            lblKlantnummer.Text = _Controller.HaalKlantOp(Convert.ToInt32(Context.User.Identity.Name)).KlantNr.ToString();
+            lblNaam.Text = _Controller.HaalKlantOp(Convert.ToInt32(Context.User.Identity.Name)).Naam + " " + _Controller.HaalKlantOp(Convert.ToInt32(Context.User.Identity.Name)).Voornaam;
+            lblAdres.Text = _Controller.HaalKlantOp(Convert.ToInt32(Context.User.Identity.Name)).Adres;
+            lblGemeente.Text = _Controller.HaalKlantOp(Convert.ToInt32(Context.User.Identity.Name)).Postcode + " " + _Controller.HaalKlantOp(Convert.ToInt32(Context.User.Identity.Name)).gemeente;
             lblBesteldatum.Text = Convert.ToString(DateTime.Now.ToLongDateString());
 
-            gvArtikelen.DataSource = _Controller.HaalWinkelmandOp(1);
+            gvArtikelen.DataSource = _Controller.HaalWinkelmandOp(Convert.ToInt32(Context.User.Identity.Name));
             gvArtikelen.DataBind();
 
-            lblTotaalIncl.Text = _Controller.HaalTotalenOp(1).TotaalIncl.ToString();
-            lblTotaalExcl.Text = _Controller.HaalTotalenOp(1).TotaalExcl.ToString();
-            lblBTW.Text = _Controller.HaalTotalenOp(1).BTW.ToString();
+            lblTotaalIncl.Text = string.Format("{0:c}", _Controller.HaalTotalenOp(Convert.ToInt32(Context.User.Identity.Name)).TotaalIncl);
+            lblTotaalExcl.Text = string.Format("{0:c}", _Controller.HaalTotalenOp(Convert.ToInt32(Context.User.Identity.Name)).TotaalExcl);
+            lblBTW.Text = string.Format("{0:c}", _Controller.HaalTotalenOp(Convert.ToInt32(Context.User.Identity.Name)).BTW);
         }
 
         protected void gvArtikelen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _Controller.ProductUitWinkelmandVerwijderenEnPasAan(1, Convert.ToInt32(gvArtikelen.SelectedRow.Cells[2].Text));
-            if (_Controller.ControleerBestaanWinkelmand(1))
+            _Controller.ProductUitWinkelmandVerwijderenEnPasAan(Convert.ToInt32(Context.User.Identity.Name), Convert.ToInt32(gvArtikelen.SelectedRow.Cells[2].Text));
+            if (_Controller.ControleerBestaanWinkelmand(Convert.ToInt32(Context.User.Identity.Name)))
             {
                 Response.Redirect("Winkelmandje.aspx");
             }
@@ -47,8 +48,8 @@ namespace GrafischeKaartenGIP
 
         protected void btnBestellen_Click(object sender, EventArgs e)
         {
-            _Controller.StuurMail(1);
-            _Controller.BestelItemsEnVerwijderVanWinkelmand(1);
+            _Controller.BestelItemsEnVerwijderVanWinkelmand(Convert.ToInt32(Context.User.Identity.Name));
+            _Controller.StuurMail(Convert.ToInt32(Context.User.Identity.Name));            
             Response.Redirect("Bestelbevestiging.aspx");
         }
     }
