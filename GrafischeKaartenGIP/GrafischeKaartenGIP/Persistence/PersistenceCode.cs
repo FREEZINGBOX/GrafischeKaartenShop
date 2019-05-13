@@ -11,6 +11,10 @@ namespace GrafischeKaartenGIP.Persistence
     {
         string ConnSTR = "server=localhost;user id=root;database=dbgrafischekaarten;password=Test123";
 
+        /// <summary>
+        /// Haal een lijst op met alle artikelen.
+        /// </summary>
+        /// <returns></returns>
         public List<Artikel> HaalArtikelenOp()
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -33,6 +37,12 @@ namespace GrafischeKaartenGIP.Persistence
             return Lijst;
         }
 
+        /// <summary>
+        /// Voeg een artikel toe aan het winkelmandje.
+        /// </summary>
+        /// <param name="aantal"></param>
+        /// <param name="Artikelnr"></param>
+        /// <param name="Klantnr"></param>
         public void VoegToeAanWinkelmanje(int aantal, int Artikelnr, int Klantnr)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -43,6 +53,11 @@ namespace GrafischeKaartenGIP.Persistence
             Conn.Close();
         }
 
+        /// <summary>
+        /// Pas voorraad aan in tblartikelen als er een artikel wordt toegevoegd aan het winkelmandje.
+        /// </summary>
+        /// <param name="aantal"></param>
+        /// <param name="Artikelnr"></param>
         public void PasVoorraadAanBijToevoegen(int aantal, int Artikelnr)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -53,6 +68,12 @@ namespace GrafischeKaartenGIP.Persistence
             Conn.Close();
         }
 
+        /// <summary>
+        /// Controleren of er nog genoeg voorraad is van een bepaald artikel.
+        /// </summary>
+        /// <param name="Artikelnr"></param>
+        /// <param name="aantal"></param>
+        /// <returns></returns>
         public bool ControleerVoorraad(int Artikelnr, int aantal)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -69,6 +90,11 @@ namespace GrafischeKaartenGIP.Persistence
             return Uitvoer;
         }
 
+        /// <summary>
+        /// Haal één artikel op op basis van het artikelnummer.
+        /// </summary>
+        /// <param name="Artikelnr"></param>
+        /// <returns></returns>
         public Artikel HaalArtikelOp(int Artikelnr)
         {
             Artikel _Artikel = new Artikel();
@@ -89,6 +115,12 @@ namespace GrafischeKaartenGIP.Persistence
             return _Artikel;            
         }
 
+        /// <summary>
+        /// Controleer of een artikel al in de winkelmand zit.
+        /// </summary>
+        /// <param name="Artikelnr"></param>
+        /// <param name="Klantnr"></param>
+        /// <returns></returns>
         public bool ControleerArtikelWinkelmand(int Artikelnr,int Klantnr)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -105,6 +137,11 @@ namespace GrafischeKaartenGIP.Persistence
             return Uitvoer;
         }
 
+        /// <summary>
+        /// Controleer of een klant al een winkelmand heeft.
+        /// </summary>
+        /// <param name="Klantnr"></param>
+        /// <returns></returns>
         public bool ControleerBestaanWinkelmand(int Klantnr)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -121,6 +158,11 @@ namespace GrafischeKaartenGIP.Persistence
             return Uitvoer;
         }
 
+        /// <summary>
+        /// Haal een lijst met de inhoud van de winkelmand.
+        /// </summary>
+        /// <param name="Klantnr"></param>
+        /// <returns></returns>
         public List<Winkelmand> HaalWinkelmandOp(int Klantnr)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -144,6 +186,11 @@ namespace GrafischeKaartenGIP.Persistence
             return Lijst;
         }
         
+        /// <summary>
+        /// Haal de gegevens van een bepaalde klant op.
+        /// </summary>
+        /// <param name="KlantNr"></param>
+        /// <returns></returns>
         public Klant HaalKlantOp(int KlantNr)
         {
             Klant _Klant = new Klant();
@@ -165,6 +212,11 @@ namespace GrafischeKaartenGIP.Persistence
             return _Klant;
         }
 
+        /// <summary>
+        /// Bereken en haal de totaalprijs op van de artikelen binnen een winkelmand.
+        /// </summary>
+        /// <param name="KlantNr"></param>
+        /// <returns></returns>
         public Bedragen HaalTotalenOp(int KlantNr)
         {
             Bedragen _Bedragen = new Bedragen();
@@ -183,6 +235,11 @@ namespace GrafischeKaartenGIP.Persistence
             return _Bedragen;
         }
 
+        /// <summary>
+        /// Verwijder een artikel uit de winkelmand.
+        /// </summary>
+        /// <param name="KlantNr"></param>
+        /// <param name="ArtikelNr"></param>
         public void ProductUitWinkelmandVerwijderen(int KlantNr, int ArtikelNr)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -193,6 +250,11 @@ namespace GrafischeKaartenGIP.Persistence
             Conn.Close();
         }
 
+        /// <summary>
+        /// Pas de voorraad aan bij het verwijderen van een artikel binnen een winkelmand.
+        /// </summary>
+        /// <param name="KlantNr"></param>
+        /// <param name="ArtikelNr"></param>
         public void PasVoorraadAanBijVerwijderen(int KlantNr, int ArtikelNr)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -203,6 +265,10 @@ namespace GrafischeKaartenGIP.Persistence
             Conn.Close();
         }
 
+        /// <summary>
+        /// Maak een lijn met gegevens aan binnen tblbestellingen.
+        /// </summary>
+        /// <param name="KlantNr"></param>
         public void MaakBestellingAan(int KlantNr)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -213,6 +279,11 @@ namespace GrafischeKaartenGIP.Persistence
             Conn.Close();
         }
 
+        /// <summary>
+        /// Haal laatste ordernummer op van een klant.
+        /// </summary>
+        /// <param name="KlantNr"></param>
+        /// <returns></returns>
         public int HaalLaatsteOrderNrOp(int KlantNr)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -229,6 +300,12 @@ namespace GrafischeKaartenGIP.Persistence
             return Getal;
         }
 
+        /// <summary>
+        /// Sla één orderitem op van de winkelmand in tblbestellijnen.
+        /// </summary>
+        /// <param name="KlantNr"></param>
+        /// <param name="ArtikelNr"></param>
+        /// <param name="Aantal"></param>
         public void SlaOrderItemOpVanWinkelmand(int KlantNr, int ArtikelNr, int Aantal)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -239,6 +316,10 @@ namespace GrafischeKaartenGIP.Persistence
             Conn.Close();
         }
 
+        /// <summary>
+        /// Maak winkelmand leeg van een bepaalde klant.
+        /// </summary>
+        /// <param name="KlantNr"></param>
         public void MaakWinkelmandLeeg(int KlantNr)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
@@ -249,10 +330,14 @@ namespace GrafischeKaartenGIP.Persistence
             Conn.Close();
         }
 
-        public Order HaalOrderOp(int KlantNr)
+        /// <summary>
+        /// Haal totaalprijs van laatste order op.
+        /// </summary>
+        /// <param name="KlantNr"></param>
+        /// <returns></returns>
+        public double HaalOrderPrijsOp(int KlantNr)
         {
-            Order _Order = new Order();
-            _Order.OrderNr = HaalLaatsteOrderNrOp(KlantNr);
+            double Uitvoer=0;            
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
             Conn.Open();
             string QRY = "select sum(prijs * aantal * 1.21) as prijs from tblbestellijnen where ordernr = " + HaalLaatsteOrderNrOp(KlantNr);
@@ -260,12 +345,17 @@ namespace GrafischeKaartenGIP.Persistence
             MySqlDataReader DTR = CMD.ExecuteReader();
             while (DTR.Read())
             {
-                _Order.Prijs = Convert.ToDouble(DTR["prijs"]);
+                Uitvoer = Convert.ToDouble(DTR["prijs"]);
             }
             Conn.Close();
-            return _Order;
+            return Uitvoer;
         }
 
+        /// <summary>
+        /// Haal de gegevens voor het maken van een mail op.
+        /// </summary>
+        /// <param name="KlantNr"></param>
+        /// <returns></returns>
         public Klant HaalMailGegevensOp(int KlantNr)
         {
             Klant _Klant = new Klant();
@@ -284,6 +374,11 @@ namespace GrafischeKaartenGIP.Persistence
             return _Klant;
         }
 
+        /// <summary>
+        /// Controleer of de logingegevens kloppen en stuur het klantnummer terug.
+        /// </summary>
+        /// <param name="_Klant"></param>
+        /// <returns></returns>
         public int ControleerLoginEnStuurKlantNrTerug(Klant _Klant)
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);

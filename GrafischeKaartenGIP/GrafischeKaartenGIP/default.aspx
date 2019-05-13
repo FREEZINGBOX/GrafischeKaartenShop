@@ -6,8 +6,10 @@
 <head runat="server">
     <title>Catalogus</title>
 </head>
-<body>
+<body class="achtergrond">
     <form id="form1" runat="server">
+        <link href="Opmaak.css" rel="stylesheet" />
+        <div class="default">
         <h2>ONLINE GRAFISCHE KAARTEN SHOP - CATALOGUS</h2>
         <p>
             <asp:GridView ID="gvArtikelen" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvArtikelen_SelectedIndexChanged">
@@ -35,6 +37,7 @@
             </asp:GridView>
         </p>
         <asp:Button ID="btnGaWinkelmand" runat="server" OnClick="btnGaWinkelmand_Click" Text="Bekijk de inhoud van het winkelmandje..." Width="1000px" />
+        </div>
     </form>
 </body>
 </html>

@@ -78,9 +78,9 @@ namespace GrafischeKaartenGIP.Business
             _PersistenceCode.MaakWinkelmandLeeg(KlantNr);
         }
 
-        public Order HaalOrderOp(int KlantNr)
+        public double HaalOrderPrijsOp(int KlantNr)
         {
-            return _PersistenceCode.HaalOrderOp(KlantNr);
+            return _PersistenceCode.HaalOrderPrijsOp(KlantNr);
         }
 
         public void StuurMail(int KlantNr)
@@ -89,7 +89,7 @@ namespace GrafischeKaartenGIP.Business
             _MailSender.Naam = _PersistenceCode.HaalMailGegevensOp(KlantNr).Voornaam + " " + _PersistenceCode.HaalMailGegevensOp(KlantNr).Naam;
             _MailSender.Mail = _PersistenceCode.HaalMailGegevensOp(KlantNr).Mail;
             _MailSender.Onderwerp = "Bestelbevestiging ordernr: " + _PersistenceCode.HaalLaatsteOrderNrOp(KlantNr);
-            _MailSender.Boodschap = "Uw bestelling met ordernr " + _PersistenceCode.HaalLaatsteOrderNrOp(KlantNr) + " werd goed door ons ontvangen." + Environment.NewLine + "Na betaling van " + string.Format("{0:c}",_PersistenceCode.HaalOrderOp(KlantNr).Prijs) +  " op rekeningnummer BE36 1030 5325 4381 zullen wij overgaan tot verzending van de grafische kaarten." + Environment.NewLine + "Gelieve het ordernummer als betalingsreferentie mee te geven." + Environment.NewLine + "Bedant voor uw vertrouwen!";
+            _MailSender.Boodschap = "Uw bestelling met ordernr " + _PersistenceCode.HaalLaatsteOrderNrOp(KlantNr) + " werd goed door ons ontvangen." + Environment.NewLine + "Na betaling van " + string.Format("{0:c}",_PersistenceCode.HaalOrderPrijsOp(KlantNr)) +  " op rekeningnummer BE36 1030 5325 4381 zullen wij overgaan tot verzending van de grafische kaarten." + Environment.NewLine + "Gelieve het ordernummer als betalingsreferentie mee te geven." + Environment.NewLine + "Bedant voor uw vertrouwen!";
             _MailSender.StuurMail();
         }
 
@@ -99,6 +99,11 @@ namespace GrafischeKaartenGIP.Business
             _Klant.Gebruikersnaam = Gebruikersnaam;
             _Klant.Wachtwoord = Wachtwoord;
             return _PersistenceCode.ControleerLoginEnStuurKlantNrTerug(_Klant);
+        }
+
+        public int HaalLaatsteOrderNrOp(int KlantNr)
+        {
+            return _PersistenceCode.HaalLaatsteOrderNrOp(KlantNr);
         }
     }
 }

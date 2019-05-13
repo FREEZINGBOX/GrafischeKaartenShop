@@ -1,2 +1,16 @@
 ﻿body {
 }
+
+.default{
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+    width:1000px;
+    background-color:white;
+    text-align:center;
+}
+
+.achtergrond{
+    background-color:grey;
+    margin:auto;
+}
