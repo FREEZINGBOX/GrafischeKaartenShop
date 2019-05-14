@@ -7,7 +7,7 @@
     <title>Product Toevoegen</title>
     <style type="text/css">
         .auto-style1 {
-            width: 1200px;
+            width: 1000px;
         }
         .auto-style2 {
             text-align: left;
@@ -17,14 +17,21 @@
         }
     </style>
 </head>
-<body>
+<body class="achtergrond">
     <form id="form1" runat="server">
-        <div>
-            <h2>ONLINE GRAFISCHE KAARTEN SHOP - Item toevoegen aan winkelmandje</h2>
+        <link href="Opmaak.css" rel="stylesheet" />
+        <div class="BannerDIV">
+            <script id="tui-e0z8">(function(t){t.e0z8={"id":"2138b4b7jy2m6mp3", 
+                "size":"1000x75"}}(window.tweenui=window.tweenui||{}))</script> 
+            <script src="https://s3-eu-west-1.amazonaws.com/display.tweenui.com/v.js" async></script><noscript> 
+            <iframe src="//s.tuicdn.com/i/2138b4b7/jy2m6mp3.html" width="1000" height="75"></iframe></noscript>
+        </div>
+
+        <div class="InhoudsDiv">
             <table class="auto-style1">
                 <tr>
                     <td>
-                        <asp:Image ID="imgFoto" runat="server" Height="400px" Width="600px" />
+                        <asp:Image ID="imgFoto" runat="server" Height="300px" Width="450px" />
                     </td>
                     <td class="auto-style2">
                         <table class="auto-style3">
@@ -66,7 +73,7 @@
             <asp:Button ID="btnVoegToe" runat="server" OnClick="btnVoegToe_Click" Text="Voeg toe aan mandje..." />
             <br />
             <asp:Button ID="btnCatalogus" runat="server" OnClick="btnCatalogus_Click" Text="Terug naar catalogus..." Visible="False" />
-        </div>
+            </div>
     </form>
 </body>
 </html>

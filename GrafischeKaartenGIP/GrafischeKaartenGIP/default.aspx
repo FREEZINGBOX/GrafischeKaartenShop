@@ -9,9 +9,14 @@
 <body class="achtergrond">
     <form id="form1" runat="server">
         <link href="Opmaak.css" rel="stylesheet" />
-        <div class="default">
-        <h2>ONLINE GRAFISCHE KAARTEN SHOP - CATALOGUS</h2>
-        <p>
+        <div class="BannerDIV">
+            <script id="tui-e0z8">(function(t){t.e0z8={"id":"2138b4b7jy2m6mp3", 
+                "size":"1000x75"}}(window.tweenui=window.tweenui||{}))</script> 
+            <script src="https://s3-eu-west-1.amazonaws.com/display.tweenui.com/v.js" async></script><noscript> 
+            <iframe src="//s.tuicdn.com/i/2138b4b7/jy2m6mp3.html" width="1000" height="75"></iframe></noscript>
+        </div>
+        <div class="InhoudsDIV">
+            <div class="CatalogusDIV">
             <asp:GridView ID="gvArtikelen" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvArtikelen_SelectedIndexChanged">
                 <Columns>
                     <asp:BoundField DataField="artikelnr" HeaderText="ArtNr">
@@ -30,13 +35,15 @@
                     <asp:BoundField DataField="voorraad" HeaderText="Voorraad">
                     <ItemStyle Width="100px" />
                     </asp:BoundField>
-                    <asp:CommandField SelectText="Voeg toe aan winkelmandje..." ShowSelectButton="True">
-                    <ItemStyle Width="200px" />
+                    <asp:CommandField SelectText="Voeg toe aan winkelmandje..." ShowSelectButton="True" ButtonType="Image" SelectImageUrl="./Images/VoegToeAanWinkelmand.JPG">
+                    <ControlStyle Height="50px" Width="50px" />
+                    <ItemStyle Width="100px" />
                     </asp:CommandField>
                 </Columns>
             </asp:GridView>
-        </p>
-        <asp:Button ID="btnGaWinkelmand" runat="server" OnClick="btnGaWinkelmand_Click" Text="Bekijk de inhoud van het winkelmandje..." Width="1000px" />
+                <br />
+                <asp:Button ID="btnGaWinkelmand" runat="server" OnClick="btnGaWinkelmand_Click" Text="Bekijk de inhoud van het winkelmandje..." />
+            </div>
         </div>
     </form>
 </body>

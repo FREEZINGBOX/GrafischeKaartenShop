@@ -66,7 +66,7 @@
             <br />
             <asp:GridView ID="gvArtikelen" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvArtikelen_SelectedIndexChanged">
                 <Columns>
-                    <asp:CommandField ButtonType="Image" SelectImageUrl="./images/Verwijderknop.jpg" SelectText="" ShowSelectButton="True">
+                    <asp:CommandField ButtonType="Image" SelectImageUrl="./images/VerwijderKnop.jpg" SelectText="" ShowSelectButton="True">
                     <ControlStyle Height="75px" Width="75px" />
                     <ItemStyle Width="100px" />
                     </asp:CommandField>

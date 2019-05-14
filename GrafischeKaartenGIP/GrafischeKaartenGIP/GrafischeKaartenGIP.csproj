@@ -76,7 +76,8 @@
     <Content Include="images\GIGABYTEGeForceRTX2070Windforce8G.jpg" />
     <Content Include="images\GIGABYTEGeForceRTX2080WINDFORCE.jpg" />
     <Content Include="images\MSIGeForceRTX2060VENTUS6GOC.jpg" />
-    <Content Include="images\Verwijderknop.jpg" />
+    <Content Include="images\VerwijderKnop.jpg" />
+    <Content Include="images\VoegToeAanWinkelmand.JPG" />
     <Content Include="images\ZOTACZotaGAMINGRTX2080TiArcticStorm.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Opmaak.css" />
@@ -100,7 +101,6 @@
     <Compile Include="Business\Controller.cs" />
     <Compile Include="Business\Klant.cs" />
     <Compile Include="Business\MailSender.cs" />
-    <Compile Include="Business\Order.cs" />
     <Compile Include="Business\Winkelmand.cs" />
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>

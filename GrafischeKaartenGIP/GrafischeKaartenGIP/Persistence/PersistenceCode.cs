@@ -383,7 +383,7 @@ namespace GrafischeKaartenGIP.Persistence
         {
             MySqlConnection Conn = new MySqlConnection(ConnSTR);
             Conn.Open();
-            string QRY = "select klantnr from tblklanten where gebruikersnaam='" + _Klant.Gebruikersnaam + "' and wachtwoord ='" + _Klant.Wachtwoord + "'";
+            string QRY = "select klantnr from tblklanten where gebruikersnaam='" + _Klant.Gebruikersnaam + "' and binary wachtwoord ='" + _Klant.Wachtwoord + "'";
             MySqlCommand CMD = new MySqlCommand(QRY, Conn);
             MySqlDataReader DTR = CMD.ExecuteReader();
             int Uitvoer = 0;

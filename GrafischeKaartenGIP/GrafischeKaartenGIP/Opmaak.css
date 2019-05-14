@@ -1,16 +1,50 @@
 ﻿body {
+    padding-top:10px;
+    padding-bottom: 10px;
 }
 
-.default{
+.InhoudsDIV{
     position:relative;
     margin-left:auto;
     margin-right:auto;
     width:1000px;
     background-color:white;
     text-align:center;
+    padding-top:20px;
+    padding-bottom: 20px;
 }
 
 .achtergrond{
     background-color:grey;
     margin:auto;
+}
+
+.BannerDIV {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    height:75px;
+}
+
+.CatalogusDIV {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 845px;
+    background-color: white;
+    text-align: center;
+}
+
+.ToevoegDIV {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 950px;
+    background-color: white;
+    text-align: left;
+}
+
+#btnGaWinkelmand{
+    width:100%;
 }
